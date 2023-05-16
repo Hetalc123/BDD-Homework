@@ -14,19 +14,18 @@ public class Hooks {
 
     LoadProp loadProp = new LoadProp();
     protected static WebDriver driver;
-    String browsername = "chrome";
+    String browser = loadProp.getProperty("browser");
     @Before
-
     public void setUp() {
-        if(browsername.equalsIgnoreCase("Chrome")) {
-            //open the browser
-            driver = new ChromeDriver();
-        }else if(browsername.equalsIgnoreCase("Edge")) {
-            //open the browser
-            driver = new EdgeDriver();
-        }else  if(browsername.equalsIgnoreCase("Firefox")) {
-            //open the browser
-            driver = new FirefoxDriver();}
+        if(browser.equalsIgnoreCase("chrome")){
+            driver=new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("Edge")) {
+            driver=new EdgeDriver();
+        } else if (browser.equalsIgnoreCase("Firefox")) {
+            driver=new FirefoxDriver();
+        }else {
+            System.out.println("wrong Browser Name");
+        }
         //open the url
         driver.get("https:/demo.nopcommerce.com/");
         //maximize the window
